@@ -1,0 +1,10 @@
+dist/
+installer/Installer.resolved.ps1
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
