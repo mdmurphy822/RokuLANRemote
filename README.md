@@ -1,52 +1,158 @@
+<div align="center">
+
 # RokuLAN Remote
 
-RokuLAN Remote is a small Windows desktop remote for Roku devices reachable on your local network. It discovers devices with Roku ECP/SSDP and a bounded TCP/8060 fallback scan, then sends local Roku ECP commands.
+### A simple Windows remote for Roku devices on your home network.
 
-## Downloads
+[![Release](https://img.shields.io/github/v/release/mdmurphy822/RokuLANRemote?label=release)](https://github.com/mdmurphy822/RokuLANRemote/releases/latest)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows)](#requirements)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Local Network](https://img.shields.io/badge/Control-Local%20Network-success)](#privacy)
 
-- **`RokuLANRemote.exe`** — portable single-file Windows x64 app.
-- **`RokuLANRemote-Package-0.2.0.exe`** — per-user installer/update/repair/uninstall package.
-- **`RokuLANRemote-0.2.0-portable.zip`** — portable release archive.
-- **`RokuLANRemote-0.2.0-source.zip`** — source/build archive.
+**No account. No cloud service. No subscription.**  
+RokuLAN Remote finds Roku devices on your LAN and turns your Windows PC into a desktop remote.
 
-The packaged executable is self-contained as a single file but uses the Windows PowerShell 5.1 runtime that ships with Windows 10/11. No Python, Node.js, .NET SDK, or separate script files are required at runtime.
+[Download the latest release](https://github.com/mdmurphy822/RokuLANRemote/releases/latest) · [Report an issue](https://github.com/mdmurphy822/RokuLANRemote/issues) · [View source](https://github.com/mdmurphy822/RokuLANRemote)
 
-## Features
+</div>
 
-- SSDP discovery for `roku:ecp`
-- bounded local subnet scan for TCP port 8060 as a fallback
-- multiple Roku device selection
-- manual IP/host connection
-- Home, Back, Info, D-pad, OK, replay, rewind, play/pause, fast-forward
-- volume buttons when the Roku reports audio-volume support
-- Find Remote when the Roku reports support
-- text entry using Roku `Lit_` keypresses
-- keyboard shortcuts: arrows, Enter, Escape, Space, H, I
-- LAN-only operation; no cloud service or telemetry
+---
 
-## Roku setting
+## What it does
 
-Recent Roku OS versions may block keypress commands while **Control by mobile apps / Network access** is set to Limited. If the app discovers your Roku but remote buttons return HTTP 403, change Roku network access to **Enabled** or **Permissive**.
+RokuLAN Remote controls compatible Roku devices directly over your local network using Roku's External Control Protocol (ECP).
 
-## Installer / package manager
+It automatically searches your network for Roku devices, lets you choose one, and provides a familiar desktop remote with navigation, playback, text entry, volume controls, and keyboard shortcuts.
 
-`RokuLANRemote-Package-0.2.0.exe` installs per-user into:
+### Highlights
+
+- **Automatic Roku discovery** using SSDP, with a TCP port `8060` subnet-scan fallback
+- **Multiple Roku support** with a device selector
+- **Manual IP connection** when you already know the Roku address
+- **Full navigation controls** — Home, Back, Info, D-pad, and OK
+- **Playback controls** — Replay, Rewind, Play/Pause, and Fast Forward
+- **Text entry** from your PC keyboard
+- **Volume controls** when supported by the connected Roku device
+- **Find Remote** when the connected Roku reports support
+- **Keyboard shortcuts** for fast control without clicking
+- **Local-only operation** with no account, telemetry, or cloud dependency
+
+---
+
+## Download
+
+Go to the **[latest GitHub release](https://github.com/mdmurphy822/RokuLANRemote/releases/latest)** and choose the package that fits how you want to use the app.
+
+| Download | Best for |
+|---|---|
+| **`RokuLANRemote-Package-0.2.0.exe`** | Recommended. Installs RokuLAN Remote with Start-menu integration and uninstall support. |
+| **`RokuLANRemote.exe`** | Portable use. Download and run without installing. |
+| **`RokuLANRemote-0.2.0-portable.zip`** | Portable app in a ZIP archive. |
+| **`RokuLANRemote-0.2.0-release.zip`** | Complete release bundle. |
+| **`RokuLANRemote-0.2.0-source.zip`** | Source/build archive. |
+| **`SHA256SUMS.txt`** | SHA-256 checksums for release verification. |
+
+### Requirements
+
+- Windows 10 or Windows 11
+- A Roku device connected to the same reachable home network as the PC
+- Roku **Control by mobile apps / Network access** set to **Enabled** or **Permissive**
+
+RokuLAN Remote uses the Windows PowerShell 5.1 runtime included with Windows. You do not need to install Python, Node.js, the .NET SDK, or any separate runtime to use the packaged app.
+
+---
+
+## Quick start
+
+### Installed version
+
+1. Download **`RokuLANRemote-Package-0.2.0.exe`** from the latest release.
+2. Run the package and choose **Install**.
+3. Open **RokuLAN Remote** from the Start menu.
+4. Wait a moment while the app discovers Roku devices on your network.
+5. Select your Roku and start controlling it.
+
+### Portable version
+
+1. Download **`RokuLANRemote.exe`**.
+2. Run it.
+3. Select a discovered Roku device.
+
+If discovery does not find your Roku, enter its IP address manually in the app. A typical home-network address looks like:
+
+```text
+192.168.0.239
+```
+
+---
+
+## Roku network setting
+
+If RokuLAN Remote can see your Roku but button presses do not work, check the Roku's network-control setting.
+
+On the Roku, open:
+
+**Settings → System → Advanced system settings → Control by mobile apps → Network access**
+
+Choose **Enabled** or **Permissive**.
+
+When Roku is set to **Limited**, it may answer discovery requests while rejecting remote-control keypress commands with HTTP `403 Forbidden`.
+
+---
+
+## Controls
+
+### Remote buttons
+
+RokuLAN Remote provides controls for:
+
+- Home
+- Back
+- Info
+- Up / Down / Left / Right
+- OK / Select
+- Instant Replay
+- Rewind
+- Play / Pause
+- Fast Forward
+- Volume Up / Down / Mute when supported
+- Find Remote when supported
+- Text entry
+
+### Keyboard shortcuts
+
+| Key | Roku action |
+|---|---|
+| `↑` `↓` `←` `→` | Navigate |
+| `Enter` | OK / Select |
+| `Esc` | Back |
+| `Space` | Play / Pause |
+| `H` | Home |
+| `I` | Info |
+
+---
+
+## Installer, update, repair, and uninstall
+
+The installer package installs RokuLAN Remote for the current Windows user at:
 
 ```text
 %LOCALAPPDATA%\Programs\RokuLAN Remote
 ```
 
-It does not require administrator rights. The package UI supports:
+It does **not** require administrator rights.
 
-- Install / reinstall
-- Update by running a newer package over the existing installation
+The package supports:
+
+- Install or reinstall
+- Update by running a newer package
 - Repair
 - Uninstall
-- optional desktop shortcut
 - Start-menu shortcut
-- Apps & Features registration under the current user
+- Optional desktop shortcut
+- Windows Apps & Features registration
 
-Command-line modes are also recognized:
+### Command-line package options
 
 ```text
 RokuLANRemote-Package-0.2.0.exe /install
@@ -55,46 +161,88 @@ RokuLANRemote-Package-0.2.0.exe /repair
 RokuLANRemote-Package-0.2.0.exe /uninstall
 ```
 
-Add `/quiet` to suppress the package UI/dialogs.
+Add `/quiet` for unattended operation.
 
-## Portable use
+---
 
-Run `RokuLANRemote.exe`. Discovery starts automatically shortly after the window appears. You can also enter a Roku IP address manually, for example:
+## Privacy
 
-```text
-192.168.0.239
+RokuLAN Remote is designed to operate entirely on your local network.
+
+- No RokuLAN Remote account
+- No telemetry
+- No analytics
+- No cloud control service
+- No remote server required
+
+The app communicates directly with Roku devices reachable from your PC over the local network.
+
+---
+
+## Troubleshooting
+
+### Roku is not discovered
+
+Make sure the PC and Roku can communicate across your home network. Guest Wi-Fi, client isolation, or separate VLANs may block device-to-device traffic even when both networks use the same router.
+
+You can also connect by entering the Roku's IP address manually.
+
+### Roku is discovered, but buttons do nothing
+
+Check **Control by mobile apps → Network access** on the Roku and set it to **Enabled** or **Permissive**.
+
+### I know the Roku IP and want to test it manually
+
+Roku ECP normally listens on TCP port `8060`. From PowerShell:
+
+```powershell
+curl.exe "http://192.168.0.239:8060/query/device-info"
 ```
 
-## Build layout
+A working Roku should return device information as XML.
+
+### Windows shows a security prompt
+
+Windows may display SmartScreen or antivirus prompts for newly downloaded executables. Release checksums are published in `SHA256SUMS.txt` so downloads can be verified against the release assets.
+
+---
+
+## For developers and contributors
+
+RokuLAN Remote is intentionally small and inspectable.
 
 ```text
-src/RokuLanRemote.ps1              application source
-installer/Installer.ps1            package-manager source template
-build/make_winexec_pe.py            tiny deterministic PE launcher builder
+src/RokuLanRemote.ps1              Windows GUI and Roku ECP logic
+installer/Installer.ps1            installer/package-manager source
+build/make_winexec_pe.py            Windows launcher builder
 build/build_release.py              release builder
-dist/                               generated release files
+.github/workflows/                  GitHub release automation
 ```
 
-The release builder creates a tiny Windows x64 GUI launcher and appends the readable PowerShell source as its payload. At runtime the launcher writes that payload to a temporary script, runs it with the built-in Windows PowerShell runtime, and removes the temporary file when the UI closes. The package executable embeds both the portable app and its installer logic, and verifies the embedded app with SHA-256 before installation. The format is intentionally simple and inspectable.
+### Build from source
 
-Build from a Python 3 environment:
+Python 3 is required only for building release artifacts:
 
 ```text
 python build/build_release.py
 ```
 
-No third-party Python packages are required.
+No third-party Python packages are required by the release builder.
 
-## Security / trust
+Contributions, bug reports, and improvements are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SECURITY.md`](SECURITY.md).
 
-The downloadable executables in this development build are **unsigned**. Windows SmartScreen or antivirus software may warn about a newly created unsigned executable, especially before the project has reputation. For a public release, sign the release artifacts with an Authenticode code-signing certificate and publish SHA-256 hashes alongside each release.
+---
 
-The application does not request elevation and installs only for the current Windows user.
+## How it works
 
-## Roku / ECP note
+RokuLAN Remote communicates with Roku devices through Roku's LAN-based External Control Protocol.
 
-Roku ECP is Roku's local-network control interface. Review Roku's current ECP terms and platform requirements before publicly distributing a third-party remote application. Roku and related marks are trademarks of Roku, Inc.; this project is not affiliated with or endorsed by Roku, Inc.
+Discovery uses SSDP for `roku:ecp`. If multicast discovery does not return a device, the app can perform a bounded scan of the local IPv4 subnet for devices responding on TCP port `8060`. Once connected, remote actions are sent directly to the selected Roku over HTTP.
+
+---
 
 ## License
 
-MIT. See `LICENSE`.
+RokuLAN Remote is open source under the **[MIT License](LICENSE)**.
+
+Roku and related marks are trademarks of Roku, Inc. RokuLAN Remote is an independent open-source project and is not affiliated with or endorsed by Roku, Inc.
